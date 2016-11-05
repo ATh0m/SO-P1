@@ -2,7 +2,9 @@ Rozszerzony problem producenta i konsumenta
 =======================
 
 Tomasz Nanowski 
+
 Wojciech Pratkowiecki
+
 Systemy Operacyjne - P1 - semestr zimowy 2016/17
 
 ----------
