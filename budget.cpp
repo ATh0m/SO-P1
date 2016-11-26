@@ -17,3 +17,8 @@ void Budget::decrease(int amount)
 
     lock.unlock();
 }
+
+bool Budget::bankrupt()
+{
+    return budget <= 0;
+}

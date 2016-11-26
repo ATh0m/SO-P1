@@ -11,4 +11,5 @@ public:
 
     void increase(int amount);
     void decrease(int amount);
+    bool bankrupt();
 };
