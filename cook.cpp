@@ -6,7 +6,7 @@ void Cook::run()
 
     while(true)
     {
-        meal = orders.consume();
+        meal = Meal(orders.consume());
 
         while(!meal.is_completed())
         {

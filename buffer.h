@@ -46,7 +46,7 @@ public:
     T consume()
     {
         std::unique_lock< std::mutex > lock (m);
-        is_empty.wait(lock, [this] () { return amount != capacity; });
+        is_empty.wait(lock, [this] () { return amount != 0; });
         
         T result = buffer [front];
         ++ front %= capacity;

@@ -7,15 +7,15 @@
 
 class Meal {
 public:
-    Recipe & recipe;
+    Recipe recipe;
     std::vector<std::pair<Ingredient, unsigned int>> missing_ingredients;
 
     Meal ()
-    : recipe {Recipe()}
-      missing_ingredient {}
-    {}
+    : missing_ingredients {},
+    recipe {Recipe()}
+    { }
 
-    Meal (Recipe & recipe)
+    Meal (Recipe recipe)
     : recipe {recipe}
     {
         for (auto i : recipe.ingredients) {

@@ -1,6 +1,6 @@
 #include <vector>
 
-#include "ingredien.h"
+#include "ingredient.h"
 #include "buffer.h"
 #include "recipe.h"
 #include "meal.h"
@@ -8,13 +8,13 @@
 class Cook {
 public:
     std::vector<std::pair<Ingredient&, Buffer<Ingredient>&>> ingredients;
-    Buffer<Recipe&>& orders;
+    Buffer<Recipe>& orders;
     Buffer<Meal>& completed_meals;
 
     Meal meal;
 
-    Cook (std::initializer_list<std::pair<Ingredient&, Buffer<Ingredient>&>> ingredients,
-          Buffer<Recipe&>& orders,
+    Cook (std::initializer_list<std::pair<Ingredient&, Buffer<Ingredient>&>> init,
+          Buffer<Recipe>& orders,
           Buffer<Meal>& completed_meals)
     : orders {orders},
       completed_meals {completed_meals}
@@ -24,4 +24,4 @@ public:
     }
 
     void run();
-}
+};
