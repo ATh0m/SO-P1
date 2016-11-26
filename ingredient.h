@@ -8,6 +8,11 @@ public:
     std::string name;
     unsigned int price;
 
+    Ingredient ()
+    : name { "" },
+    price { 0 }
+    {}
+    
     Ingredient (const std::string & name, const unsigned int price)
     :   name {name}, 
         price {price}
