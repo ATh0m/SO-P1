@@ -31,6 +31,6 @@ void Cook::run()
 
 void Cook::runMultiThread() 
 {    
-   std::thread t1(&Deliverer::run, this);
-   t1.join()
+   std::thread t1(&Cook::run, this);
+   t1.join();
 }
