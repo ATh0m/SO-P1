@@ -11,3 +11,9 @@ void Deliverer::run()
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
 }
+
+void Deliverer::runMultiThread()
+{
+   std::thread t1(&Deliverer::run, this);
+   t1.join()
+}

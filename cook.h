@@ -1,4 +1,5 @@
 #include <vector>
+#include <thread>
 
 #include "ingredient.h"
 #include "buffer.h"
@@ -24,4 +25,5 @@ public:
     }
 
     void run();
+    void runMultiThread();
 };
