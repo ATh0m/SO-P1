@@ -7,10 +7,10 @@
 
 class Meal {
 public:
-    const Recipe & recipe;
+    Recipe & recipe;
     std::vector<std::pair<Ingredient, unsigned int>> missing_ingredients;
 
-    Meal (const Recipe & recipe) 
+    Meal (Recipe & recipe)
     : recipe {recipe}
     {
         for (auto i : recipe.ingredients) {
@@ -18,6 +18,16 @@ public:
         }
     }
 
+    Meal& operator = (const Meal& m)
+    {
+        if (&m == this)
+            return *this;
+        recipe = m.recipe;
+        for ( auto i : m.missing_ingredients )
+            missing_ingredients.push_back(i);
+        return *this;
+    }
+    
     bool is_completed();
     Ingredient get_missing_ingredient();
     void update_misiing_ingredients();
