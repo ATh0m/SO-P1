@@ -4,6 +4,7 @@
 #include <vector>
 class Recipe
 {
+public:
     const std::string name;
     const unsigned int price;
     std::vector < std::pair < Ingredient, unsigned int > > ingredients;

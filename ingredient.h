@@ -4,6 +4,7 @@
 #include <string>
 
 class Ingredient {
+public:
     const std::string name;
     const unsigned int price;
 
