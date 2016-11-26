@@ -10,6 +10,11 @@ public:
     Recipe & recipe;
     std::vector<std::pair<Ingredient, unsigned int>> missing_ingredients;
 
+    Meal ()
+    : recipe {Recipe()}
+      missing_ingredient {}
+    {}
+
     Meal (Recipe & recipe)
     : recipe {recipe}
     {
