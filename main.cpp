@@ -65,13 +65,13 @@ int main()
             { std::ref(makaron), std::ref(buff_makaron) } },
         budget, mail);
 
-    Waiter waiter1({ r1, r2, r3 }, buff_recipe);
-    Waiter2 waiter2(buff_meal, budget);
+    WaiterOrder waiter1({ r1, r2, r3 }, buff_recipe);
+    WaiterDeliver waiter2(buff_meal, budget);
 
     std::thread t1(&Deliverer::run, deliverer);
     std::thread t2(&Cook::run, cook);
-    std::thread t3(&Waiter::run, waiter1);
-    std::thread t4(&Waiter2::run, waiter2);
+    std::thread t3(&WaiterOrder::run, waiter1);
+    std::thread t4(&WaiterDeliver::run, waiter2);
 
     while (!budget.bankrupt()) {;}
     std::cout << std::endl << "BANKRUPT!" << std::endl;

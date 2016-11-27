@@ -9,11 +9,11 @@
 #include "meal.h"
 #include "recipe.h"
 
-class Waiter {
+class WaiterOrder {
 public:
     Buffer<Recipe>& buff;
     std::vector<Recipe> recipe_vec;
-    Waiter(std::initializer_list<Recipe> init, Buffer<Recipe>& buff)
+    WaiterOrder(std::initializer_list<Recipe> init, Buffer<Recipe>& buff)
         : buff{ buff }
     {
         for (auto i = init.begin(); i != init.end(); ++i)
@@ -22,12 +22,12 @@ public:
     void run();
 };
 
-class Waiter2 {
+class WaiterDeliver {
 public:
     Buffer<Meal>& completed_meals;
     Budget& budget;
 
-    Waiter2(Buffer<Meal>& completed_meals, Budget& budget)
+    WaiterDeliver(Buffer<Meal>& completed_meals, Budget& budget)
         : completed_meals{ completed_meals }
         , budget{ budget }
     {
