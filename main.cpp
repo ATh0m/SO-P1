@@ -73,7 +73,10 @@ int main()
     std::thread t3(&WaiterOrder::run, waiter1);
     std::thread t4(&WaiterDeliver::run, waiter2);
 
-    while (!budget.bankrupt()) {;}
+    while (!budget.bankrupt()) {
+        std::cout << "[Budget] "<< budget.budget << "$" << std::endl;
+        std::this_thread::sleep_for(std::chrono::milliseconds(30));
+    }
     std::cout << std::endl << "BANKRUPT!" << std::endl;
     
     t1.detach();
