@@ -19,7 +19,7 @@ int main()
     Ingredient makaron("makaron", 7);
     Mailbox mail;
 
-    Recipe r1("salatka", 50, { { salata, 3 },
+    Recipe r1("salatka", 25, { { salata, 3 },
                                  { pomidor, 2 },
                                  { pomarancza, 2 },
                                  { ogorek, 2 } });
@@ -28,7 +28,7 @@ int main()
                                { ser, 2 },
                                { ananas, 1 } });
 
-    Recipe r3("danie", 100, { { makaron, 1 },
+    Recipe r3("danie", 70, { { makaron, 1 },
                                 { mieso, 1 } });
 
     Buffer<Ingredient> buff_pomidor(100);
@@ -73,8 +73,12 @@ int main()
     std::thread t3(&Waiter::run, waiter1);
     std::thread t4(&Waiter2::run, waiter2);
 
-    while (true) {
-        ;
-    }
+    while (!budget.bankrupt()) {;}
+    std::cout << std::endl << "BANKRUPT!" << std::endl;
+    
+    t1.detach();
+    t2.detach();
+    t3.detach();
+    t4.detach();
     return 0;
 }
