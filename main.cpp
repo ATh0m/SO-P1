@@ -6,7 +6,7 @@
 #include "recipe.h"
 #include "waiter.h"
 #include <iostream>
-
+#include "mailbox.h"
 int main()
 {
     Ingredient pomidor("pomidor", 2);
@@ -17,6 +17,7 @@ int main()
     Ingredient ser("ser", 6);
     Ingredient mieso("mieso", 10);
     Ingredient makaron("makaron", 7);
+    Mailbox mail;
 
     Recipe r1("salatka", 50, { { salata, 3 },
                                  { pomidor, 2 },
@@ -51,7 +52,7 @@ int main()
                   { std::ref(ser), std::ref(buff_ser) },
                   { std::ref(mieso), std::ref(buff_mieso) },
                   { std::ref(makaron), std::ref(buff_makaron) } },
-        buff_recipe, buff_meal);
+        buff_recipe, buff_meal, mail);
 
     Deliverer deliverer(
         { { std::ref(pomidor), std::ref(buff_pomidor) },
@@ -62,7 +63,7 @@ int main()
             { std::ref(ser), std::ref(buff_ser) },
             { std::ref(mieso), std::ref(buff_mieso) },
             { std::ref(makaron), std::ref(buff_makaron) } },
-        budget);
+        budget, mail);
 
     Waiter waiter1({ r1, r2, r3 }, buff_recipe);
     Waiter2 waiter2(buff_meal, budget);
@@ -79,8 +80,6 @@ int main()
                   << buff_mieso.amount << " " << buff_makaron.amount << " // "
                   << buff_recipe.amount << " // " << buff_meal.amount << " // "
                   << budget.budget << std::endl;
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
-
     return 0;
 }

@@ -3,8 +3,8 @@ CXXFLAGS = -pthread -std=c++11 -Wall -Werror -Wextra -pedantic
 
 default: main
 
-main: main.cpp budget.o cook.o deliverer.o ingredient.o recipe.o meal.o waiter.o buffer.h
-	$(CXX) $(CXXFLAGS) -o main main.cpp budget.o cook.o deliverer.o ingredient.o recipe.o meal.o waiter.o
+main: main.cpp budget.o cook.o deliverer.o ingredient.o recipe.o mailbox.o meal.o waiter.o buffer.h
+	$(CXX) $(CXXFLAGS) -o main main.cpp budget.o cook.o deliverer.o ingredient.o recipe.o mailbox.o meal.o waiter.o
 
 budget.o: budget.cpp budget.h buffer.h
 	$(CXX) $(CXXFLAGS) -c budget.cpp
@@ -17,6 +17,9 @@ deliverer.o: deliverer.cpp deliverer.h buffer.h
 
 ingredient.o: ingredient.cpp ingredient.h buffer.h
 	$(CXX) $(CXXFLAGS) -c ingredient.cpp
+
+mailbox.o: mailbox.cpp mailbox.h
+	$(CXX) $(CXXFLAGS) -c mailbox.cpp
 
 meal.o: meal.cpp meal.h buffer.h
 	$(CXX) $(CXXFLAGS) -c meal.cpp

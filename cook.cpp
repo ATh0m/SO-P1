@@ -9,10 +9,16 @@ void Cook::run()
 
         while (!meal.is_completed()) {
             Ingredient missing_ingredient = meal.get_missing_ingredient();
-
+            
             Ingredient ingredient;
-            for (auto i : ingredients) {
-                if (i.first.name == missing_ingredient.name) {
+
+            for (auto i : ingredients)
+            {
+                if (i.first.name == missing_ingredient.name)
+                {
+                    if (i.second.amount == 0)
+                        mail.push_message(i.first);
+                    
                     ingredient = i.second.consume();
                     break;
                 }
