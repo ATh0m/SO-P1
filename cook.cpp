@@ -25,6 +25,7 @@ void Cook::run()
             }
 
             meal.update_misiing_ingredients();
+            std::cout << meal << std::endl;
         }
 
         completed_meals.produce(meal);

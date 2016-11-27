@@ -40,4 +40,6 @@ public:
     void update_misiing_ingredients();
 };
 
+std::ostream& operator << ( std::ostream& stream, const Meal& m );
+
 #endif /* meal_h */

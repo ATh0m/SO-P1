@@ -18,3 +18,13 @@ void Meal::update_misiing_ingredients()
         missing_ingredients.pop_back();
     }
 }
+
+std::ostream& operator << ( std::ostream& stream, const Meal& m )
+{
+    stream << "[Meal] " << m.recipe.name << " missing: ";
+    
+    for (auto i : m.missing_ingredients)
+        stream << "{ " << i.first.name << ": " << i.second << " } ";
+    
+    return stream;
+}
