@@ -1,3 +1,5 @@
+#ifndef cook_h
+#define cook_h
 #include <vector>
 #include <thread>
 
@@ -27,3 +29,5 @@ public:
     void run();
     void runMultiThread();
 };
+
+#endif /* cook_h */
