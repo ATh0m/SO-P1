@@ -9,10 +9,6 @@
 
 int main()
 {
-    int a = 2;
-    ++a %= 3;
-    printf("%d\n", a);
-
     Ingredient pomidor("pomidor", 2);
     Ingredient ananas("ananas", 3);
     Ingredient pomarancza("pomarancza", 5);
@@ -22,19 +18,17 @@ int main()
     Ingredient mieso("mieso", 10);
     Ingredient makaron("makaron", 7);
 
-    std::pair<Ingredient, unsigned int> para = std::make_pair(salata, 3);
+    Recipe r1("salatka", 50, { { salata, 3 },
+                                 { pomidor, 2 },
+                                 { pomarancza, 2 },
+                                 { ogorek, 2 } });
 
-    Recipe r1("salatka", 50,
-        { std::make_pair(salata, 3), std::make_pair(pomidor, 2),
-            std::make_pair(pomarancza, 2), std::make_pair(ogorek, 2) });
-    Recipe r2("pizza", 50, { std::make_pair(mieso, 1), std::make_pair(ser, 2),
-                               std::make_pair(ananas, 1) });
-    Recipe r3("danie", 100,
-        { std::make_pair(makaron, 1), std::make_pair(mieso, 1) });
+    Recipe r2("pizza", 50, { { mieso, 1 },
+                               { ser, 2 },
+                               { ananas, 1 } });
 
-    Meal m1(r1);
-    Meal m2(r2);
-    Meal m3(r3);
+    Recipe r3("danie", 100, { { makaron, 1 },
+                                { mieso, 1 } });
 
     Buffer<Ingredient> buff_pomidor(100);
     Buffer<Ingredient> buff_ananas(100);
@@ -49,33 +43,29 @@ int main()
 
     Buffer<Recipe> buff_recipe(100);
     Buffer<Meal> buff_meal(100);
-    Cook cook({ std::make_pair(std::ref(pomidor), std::ref(buff_pomidor)),
-                  std::make_pair(std::ref(ananas), std::ref(buff_ananas)),
-                  std::make_pair(std::ref(pomarancza), std::ref(buff_pomarancza)),
-                  std::make_pair(std::ref(salata), std::ref(buff_salata)),
-                  std::make_pair(std::ref(ogorek), std::ref(buff_ogorek)),
-                  std::make_pair(std::ref(ser), std::ref(buff_ser)),
-                  std::make_pair(std::ref(mieso), std::ref(buff_mieso)),
-                  std::make_pair(std::ref(makaron), std::ref(buff_makaron)) },
+    Cook cook({ { std::ref(pomidor), std::ref(buff_pomidor) },
+                  { std::ref(ananas), std::ref(buff_ananas) },
+                  { std::ref(pomarancza), std::ref(buff_pomarancza) },
+                  { std::ref(salata), std::ref(buff_salata) },
+                  { std::ref(ogorek), std::ref(buff_ogorek) },
+                  { std::ref(ser), std::ref(buff_ser) },
+                  { std::ref(mieso), std::ref(buff_mieso) },
+                  { std::ref(makaron), std::ref(buff_makaron) } },
         buff_recipe, buff_meal);
 
     Deliverer deliverer(
-        { std::make_pair(std::ref(pomidor), std::ref(buff_pomidor)),
-            std::make_pair(std::ref(ananas), std::ref(buff_ananas)),
-            std::make_pair(std::ref(pomarancza), std::ref(buff_pomarancza)),
-            std::make_pair(std::ref(salata), std::ref(buff_salata)),
-            std::make_pair(std::ref(ogorek), std::ref(buff_ogorek)),
-            std::make_pair(std::ref(ser), std::ref(buff_ser)),
-            std::make_pair(std::ref(mieso), std::ref(buff_mieso)),
-            std::make_pair(std::ref(makaron), std::ref(buff_makaron)) },
+        { { std::ref(pomidor), std::ref(buff_pomidor) },
+            { std::ref(ananas), std::ref(buff_ananas) },
+            { std::ref(pomarancza), std::ref(buff_pomarancza) },
+            { std::ref(salata), std::ref(buff_salata) },
+            { std::ref(ogorek), std::ref(buff_ogorek) },
+            { std::ref(ser), std::ref(buff_ser) },
+            { std::ref(mieso), std::ref(buff_mieso) },
+            { std::ref(makaron), std::ref(buff_makaron) } },
         budget);
 
     Waiter waiter1({ r1, r2, r3 }, buff_recipe);
     Waiter2 waiter2(buff_meal, budget);
-
-    buff_recipe.produce(r1);
-    buff_recipe.produce(r3);
-    buff_recipe.produce(r2);
 
     std::thread t1(&Deliverer::run, deliverer);
     std::thread t2(&Cook::run, cook);
