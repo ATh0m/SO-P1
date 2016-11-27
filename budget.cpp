@@ -3,7 +3,7 @@
 void Budget::increase(int amount)
 {
     std::unique_lock<std::mutex> lock(m);
-    
+
     budget += amount;
 
     lock.unlock();
@@ -18,7 +18,4 @@ void Budget::decrease(int amount)
     lock.unlock();
 }
 
-bool Budget::bankrupt()
-{
-    return budget <= 0;
-}
+bool Budget::bankrupt() { return budget <= 0; }
