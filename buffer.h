@@ -11,16 +11,18 @@ public:
     int front;
     int last;
     unsigned int amount;
+    std::string name;
 
     std::mutex m;
     std::condition_variable is_full;
     std::condition_variable is_empty;
 
-    Buffer(const unsigned int capacity)
+    Buffer(const unsigned int capacity, std::string name)
         : capacity{ capacity }
         , front{ 0 }
         , last{ 0 }
         , amount{ 0 }
+        , name{ name }
     {
         buffer = new T[capacity];
     }
@@ -36,6 +38,8 @@ public:
         ++last %= capacity;
         ++amount;
 
+        std::cout << "[" << name << "] increase" << std::endl;
+
         is_empty.notify_one();
         lock.unlock();
     }
@@ -48,6 +52,8 @@ public:
         T result = buffer[front];
         ++front %= capacity;
         --amount;
+
+        std::cout << "[" << name << "] decrease" << std::endl;
 
         is_full.notify_one();
         lock.unlock();

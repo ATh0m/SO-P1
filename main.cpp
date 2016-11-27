@@ -31,19 +31,19 @@ int main()
     Recipe r3("danie", 70, { { makaron, 1 },
                                 { mieso, 1 } });
 
-    Buffer<Ingredient> buff_pomidor(100);
-    Buffer<Ingredient> buff_ananas(100);
-    Buffer<Ingredient> buff_pomarancza(100);
-    Buffer<Ingredient> buff_salata(100);
-    Buffer<Ingredient> buff_ogorek(100);
-    Buffer<Ingredient> buff_ser(100);
-    Buffer<Ingredient> buff_mieso(100);
-    Buffer<Ingredient> buff_makaron(100);
+    Buffer<Ingredient> buff_pomidor(100, "buff_pomidor");
+    Buffer<Ingredient> buff_ananas(100, "buff_ananas");
+    Buffer<Ingredient> buff_pomarancza(100, "buff_pomarancza");
+    Buffer<Ingredient> buff_salata(100, "buff_salata");
+    Buffer<Ingredient> buff_ogorek(100, "buff_ogorek");
+    Buffer<Ingredient> buff_ser(100, "buff_ser");
+    Buffer<Ingredient> buff_mieso(100, "buff_mieso");
+    Buffer<Ingredient> buff_makaron(100, "buff_makaron");
 
     Budget budget(1000);
 
-    Buffer<Recipe> buff_recipe(100);
-    Buffer<Meal> buff_meal(100);
+    Buffer<Recipe> buff_recipe(100, "buff_recipe");
+    Buffer<Meal> buff_meal(100, "buff_meal");
     Cook cook({ { std::ref(pomidor), std::ref(buff_pomidor) },
                   { std::ref(ananas), std::ref(buff_ananas) },
                   { std::ref(pomarancza), std::ref(buff_pomarancza) },
