@@ -11,8 +11,8 @@ public:
     std::vector<std::pair<Ingredient, unsigned int>> missing_ingredients;
 
     Meal ()
-    : missing_ingredients {},
-    recipe {Recipe()}
+    : recipe {Recipe()},
+      missing_ingredients {}
     { }
 
     Meal (Recipe recipe)

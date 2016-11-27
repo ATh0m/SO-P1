@@ -28,8 +28,3 @@ void Cook::run()
         completed_meals.produce(meal);
     }
 }
-
-void Cook::runMultiThread() 
-{    
-   std::thread t1(&Cook::run, this);
-}

@@ -27,7 +27,6 @@ public:
     }
 
     void run();
-    void runMultiThread();
 };
 
 #endif /* cook_h */

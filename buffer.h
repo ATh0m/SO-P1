@@ -10,7 +10,7 @@ public:
     const unsigned int capacity;
     int front;
     int last;
-    int amount;
+    unsigned int amount;
     
     std::mutex m;
     std::condition_variable is_full;

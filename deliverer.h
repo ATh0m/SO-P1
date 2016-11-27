@@ -21,7 +21,6 @@ public:
             buffer_set.push_back(*i);
     }
     void run();
-    void runMultiThread();
 };
 
 #endif /* deliverer_h */
