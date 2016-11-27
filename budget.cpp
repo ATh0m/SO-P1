@@ -19,7 +19,7 @@ void Budget::decrease(int amount)
     budget -= amount;
     
     std::ostringstream os;
-    os << "[Budget] +" << amount;
+    os << "[Budget] -" << amount;
     std::cout << os.str() << std::endl;
 
     lock.unlock();
