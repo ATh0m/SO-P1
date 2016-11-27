@@ -4,6 +4,7 @@
 #include "meal.h"
 #include "cook.h"
 #include "deliverer.h"
+#include "waiter.h"
 
 int main() {
     int a = 2;
@@ -21,7 +22,7 @@ int main() {
     
     std::pair<Ingredient, unsigned int> para = std::make_pair(salata, 3);
     
-    Recipe r1 ("salatka", 50, { std::make_pair(salata, 3), std::make_pair(pomidor, 2)});
+    Recipe r1 ("salatka", 50, { std::make_pair(salata, 3), std::make_pair(pomidor, 2), std::make_pair(pomarancza, 2), std::make_pair(ogorek, 2)});
     Recipe r2 ("pizza", 50, { std::make_pair(mieso, 1), std::make_pair(ser, 2), std::make_pair(ananas, 1)});
     Recipe r3 ("danie", 100, { std::make_pair(makaron, 1), std::make_pair(mieso, 1) } );
     
@@ -40,7 +41,6 @@ int main() {
     
     Buffer <Recipe> buff_recipe (100);
     Buffer <Meal> buff_meal (100);
-   
     Cook cook ({std::make_pair(std::ref(pomidor), std::ref(buff_pomidor)),
                 std::make_pair(std::ref(ananas), std::ref(buff_ananas)),
                 std::make_pair(std::ref(pomarancza), std::ref(buff_pomarancza)),
@@ -59,12 +59,15 @@ int main() {
                           std::make_pair(std::ref(mieso), std::ref(buff_mieso)),
                           std::make_pair(std::ref(makaron), std::ref(buff_makaron))});
     
+    Waiter waiter1 ({ r1, r2, r3 }, buff_recipe);
+    
     buff_recipe.produce(r1);
     buff_recipe.produce(r3);
     buff_recipe.produce(r2);
     
     std::thread t1 (&Deliverer::run, deliverer);
     std::thread t2 (&Cook::run, cook);
+    std::thread t3 (&Waiter::run, waiter1);
     
     while (true)
     {

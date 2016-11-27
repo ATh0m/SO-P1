@@ -1,6 +1,8 @@
 #include "meal.h"
 
 bool Meal::is_completed() {
+    if(missing_ingredients.empty())
+        printf("!!!!!\n");
     return missing_ingredients.empty();
 }
 
