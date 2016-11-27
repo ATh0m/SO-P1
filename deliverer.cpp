@@ -15,5 +15,4 @@ void Deliverer::run()
 void Deliverer::runMultiThread()
 {
    std::thread t1(&Deliverer::run, this);
-   t1.join();
 }
