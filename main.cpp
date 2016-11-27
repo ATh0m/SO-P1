@@ -74,12 +74,12 @@ int main()
     std::thread t4(&Waiter2::run, waiter2);
 
     while (true) {
-        std::cout << buff_pomidor.amount << " " << buff_ananas.amount << " "
+       /* std::cout << buff_pomidor.amount << " " << buff_ananas.amount << " "
                   << buff_pomarancza.amount << " " << buff_salata.amount << " "
                   << buff_ogorek.amount << " " << buff_ser.amount << " "
                   << buff_mieso.amount << " " << buff_makaron.amount << " // "
                   << buff_recipe.amount << " // " << buff_meal.amount << " // "
-                  << budget.budget << std::endl;
+                  << budget.budget << std::endl; */;
     }
     return 0;
 }

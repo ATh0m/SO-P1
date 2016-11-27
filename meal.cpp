@@ -3,7 +3,7 @@
 bool Meal::is_completed()
 {
     if (missing_ingredients.empty())
-        printf("!!!!!\n");
+        std::cout << "[Meal] Meal is ready: " << recipe.name << std::endl;
     return missing_ingredients.empty();
 }
 
