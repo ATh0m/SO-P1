@@ -4,7 +4,7 @@ CXXFLAGS = -pthread -std=c++11 -Wall -Werror -Wextra -pedantic
 default: main
 
 main: main.cpp budget.o cook.o deliverer.o ingredient.o recipe.o mailbox.o meal.o waiter.o buffer.h
-	$(CXX) $(CXXFLAGS) -o main main.cpp budget.o cook.o deliverer.o ingredient.o recipe.o mailbox.o meal.o waiter.o
+	$(CXX) $(CXXFLAGS) -o main main.cpp budget.o meal.o cook.o deliverer.o ingredient.o recipe.o mailbox.o waiter.o
 
 budget.o: budget.cpp budget.h buffer.h
 	$(CXX) $(CXXFLAGS) -c budget.cpp

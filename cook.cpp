@@ -6,6 +6,7 @@ void Cook::run()
 
     while (true) {
         meal = Meal(orders.consume());
+        std::cout << "[Cook] Got new order: " << meal.recipe.name << std::endl;
 
         while (!meal.is_completed()) {
             Ingredient missing_ingredient = meal.get_missing_ingredient();
@@ -14,7 +15,7 @@ void Cook::run()
 
             for (auto i : ingredients)
             {
-                if (i.first.name == missing_ingredient.name)
+                if (i.first == missing_ingredient)
                 {
                     if (i.second.amount == 0)
                         mail.push_message(i.first);
@@ -27,7 +28,9 @@ void Cook::run()
             meal.update_misiing_ingredients();
             std::cout << meal << std::endl;
         }
+        std::cout << "[Cook] Completed meal: " << meal.recipe.name << std::endl;
 
         completed_meals.produce(meal);
+        std::cout << "[Cook] Added meal " << meal.recipe.name << " to deliever" << std::endl;
     }
 }
