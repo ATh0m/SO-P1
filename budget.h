@@ -2,6 +2,7 @@
 #define budget_h
 
 #include <mutex>
+#include <iostream>
 
 class Budget {
 public:

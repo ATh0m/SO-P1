@@ -11,7 +11,7 @@ void Deliverer::run()
             Ingredient & tmp = mail.get_message();
             for (auto i : buffer_set)
             {
-                if (i.first.name == tmp.name)
+                if (i.first == tmp)
                 {
                     i.second.produce(i.first);
                     budget.decrease(i.first.price);

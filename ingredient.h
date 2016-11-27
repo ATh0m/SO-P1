@@ -36,6 +36,11 @@ public:
         price = i.price;
         return *this;
     }
+
+    bool operator ==(const Ingredient& i) const
+    {
+        return name == i.name;
+    }
 };
 
 #endif /* ingredient_h */
