@@ -20,7 +20,9 @@ Ingredient& Mailbox::get_message()
     queue.pop();
     is_full.notify_one();
     lock.unlock();
-    std::cout << "[Mailbox] Got message: " << res.name << std::endl;
+    std::ostringstream os;
+    os << "[Mailbox] Got message: " << res.name;
+    std::cout << os.str() << std::endl;
     return res;
 }
 
@@ -30,6 +32,8 @@ void Mailbox::push_message(Ingredient& i)
     is_full.wait(lock, [this] () { return queue.size() != mail_limit; });
     queue.push(i);
     lock.unlock();
-    std::cout << "[Mailbox] Added message: " << i.name << std::endl;
+    std::ostringstream os;
+    os<< "[Mailbox] Added message: " << i.name;
+    std::cout << os.str() << std::endl;
 }
 

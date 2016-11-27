@@ -28,9 +28,13 @@ void Cook::run()
             meal.update_misiing_ingredients();
             std::cout << meal << std::endl;
         }
-        std::cout << "[Cook] Completed meal: " << meal.recipe.name << std::endl;
+        std::ostringstream os;
+        os << "[Cook] Completed meal: " << meal.recipe.name;
+        std::cout << os.str() << std::endl;
 
         completed_meals.produce(meal);
-        std::cout << "[Cook] Added meal " << meal.recipe.name << " to deliever" << std::endl;
+        std::ostringstream os2;
+        os2<< "[Cook] Added meal " << meal.recipe.name << " to deliever";
+        std::cout << os2.str() << std::endl;
     }
 }

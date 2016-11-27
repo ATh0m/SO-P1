@@ -3,6 +3,7 @@
 
 #include <mutex>
 #include <iostream>
+#include <sstream>
 
 class Budget {
 public:

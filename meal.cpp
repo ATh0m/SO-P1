@@ -21,10 +21,12 @@ void Meal::update_misiing_ingredients()
 
 std::ostream& operator << ( std::ostream& stream, const Meal& m )
 {
-    stream << "[Meal] " << m.recipe.name << " missing: ";
+    std::ostringstream os;
+    os << "[Meal] " << m.recipe.name << " missing: ";
     
     for (auto i : m.missing_ingredients)
-        stream << "{ " << i.first.name << ": " << i.second << " } ";
+        os << "{ " << i.first.name << ": " << i.second << " } ";
     
+    stream << os.str();
     return stream;
 }

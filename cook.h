@@ -3,6 +3,7 @@
 
 #include <thread>
 #include <vector>
+#include <sstream>
 #include "mailbox.h"
 #include "ingredient.h"
 #include "buffer.h"

@@ -2,6 +2,7 @@
 #define buffer_h
 
 #include <mutex>
+#include <sstream>
 
 template <typename T>
 class Buffer {
@@ -37,8 +38,10 @@ public:
         buffer[last] = product;
         ++last %= capacity;
         ++amount;
-
-        std::cout << "[" << name << "] increase" << std::endl;
+        
+        std::ostringstream os;
+        os << "[" << name << "] increase";
+        std::cout << os.str() << std::endl;
 
         is_empty.notify_one();
         lock.unlock();
@@ -53,7 +56,9 @@ public:
         ++front %= capacity;
         --amount;
 
-        std::cout << "[" << name << "] decrease" << std::endl;
+        std::ostringstream os;
+        os << "[" << name << "] decrease";
+        std::cout << os.str() << std::endl;
 
         is_full.notify_one();
         lock.unlock();

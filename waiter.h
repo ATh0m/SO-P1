@@ -3,7 +3,7 @@
 
 #include <chrono>
 #include <thread>
-
+#include <sstream>
 #include "budget.h"
 #include "buffer.h"
 #include "meal.h"

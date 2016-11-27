@@ -2,7 +2,7 @@
 #define meal_h
 
 #include <vector>
-
+#include <sstream>
 #include "ingredient.h"
 #include "recipe.h"
 

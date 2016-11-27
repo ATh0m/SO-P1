@@ -3,6 +3,7 @@
 #include "ingredient.h"
 #include <queue>
 #include <mutex>
+#include <sstream>
 class Mailbox
 {
     unsigned int mail_limit;
