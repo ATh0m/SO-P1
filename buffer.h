@@ -3,6 +3,7 @@
 
 #include <mutex>
 #include <sstream>
+#include <condition_variable>
 
 template <typename T>
 class Buffer {
