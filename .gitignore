@@ -27,3 +27,6 @@
 *.exe
 *.out
 *.app
+
+# YouCompleteMe
+.ycm_extra_conf.py
