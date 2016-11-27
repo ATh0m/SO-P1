@@ -8,7 +8,7 @@ void Waiter::run()
     {
         int rnd = rand() % recipe_vec.size();
         buff.produce ( recipe_vec[rnd] ) ;
-        std::this_thread::sleep_for(std::chrono::milliseconds(25));
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 }
 
@@ -18,6 +18,6 @@ void Waiter2::run()
         Meal meal = completed_meals.consume();
         budget.increase(meal.recipe.price);
         
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 }
