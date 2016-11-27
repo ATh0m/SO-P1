@@ -2,6 +2,7 @@
 #define deliverer_h
 #include "buffer.h"
 #include "ingredient.h"
+#include "budget.h"
 #include <cstdlib>
 #include <ctime>
 #include <vector>
@@ -11,7 +12,10 @@ class Deliverer
 {
 public:
     std::vector< std::pair< Ingredient& , Buffer<Ingredient>& > > buffer_set;
-    Deliverer( std::initializer_list < std::pair< Ingredient& , Buffer<Ingredient>& > > init )
+    Budget & budget;
+    
+    Deliverer( std::initializer_list < std::pair< Ingredient& , Buffer<Ingredient>& > > init, Budget & budget)
+    : budget (budget)
     {
         for ( auto i = init.begin() ; i != init.end() ; ++ i )
             buffer_set.push_back(*i);

@@ -11,3 +11,13 @@ void Waiter::run()
         std::this_thread::sleep_for(std::chrono::milliseconds(25));
     }
 }
+
+void Waiter2::run()
+{
+    while (true) {
+        Meal meal = completed_meals.consume();
+        budget.increase(meal.recipe.price);
+        
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    }
+}

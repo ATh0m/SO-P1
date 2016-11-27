@@ -1,3 +1,6 @@
+#ifndef budget_h
+#define budget_h
+
 #include <mutex>
 
 class Budget {
@@ -13,3 +16,5 @@ public:
     void decrease(int amount);
     bool bankrupt();
 };
+
+#endif /* budget_h */
